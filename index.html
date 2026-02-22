@@ -1,0 +1,1581 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title> كورس الفوتوشوب — Mohamed Eid AbdEl-Aziz</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --midnight:#0F2E35;
+      --deep:#123F45;
+      --cyan:#1E5A63;
+      --gold:#E7B45A;
+      --warm:#FFD27A;
+      --glow:#F5E6C4;
+
+      --text:rgba(255,255,255,.88);
+      --muted:rgba(255,255,255,.68);
+      --shadow:0 18px 70px rgba(0,0,0,.35);
+      --r:22px;
+
+      --border: rgba(231,180,90,.20);
+      --bgGlass: rgba(8,26,30,.45);
+      --bgGlass2: rgba(15,46,53,.35);
+
+      /* ========== Font scale (controlled by top icon) ========== */
+      --scale: 1;
+
+      /* ===== Base typography (then multiplied by --scale) ===== */
+      --fs-body-base: clamp(16px, 1.2vw, 19px);
+      --fs-small-base: clamp(14px, 1.05vw, 16px);
+      --fs-pill-base: clamp(14px, 1.05vw, 16px);
+      --fs-note-base: clamp(15px, 1.1vw, 17px);
+      --fs-card-p-base: clamp(15px, 1.1vw, 17px);
+      --fs-section-p-base: clamp(15px, 1.1vw, 17px);
+      --fs-feature-h-base: clamp(17px, 1.25vw, 19px);
+      --fs-feature-p-base: clamp(15px, 1.15vw, 17px);
+      --fs-btn-base: clamp(14px, 1.05vw, 16px);
+      --fs-summary-base: clamp(15px, 1.1vw, 17px);
+      --fs-lec-title-base: clamp(17px, 1.25vw, 19px);
+      --fs-lec-desc-base: clamp(15px, 1.1vw, 17px);
+      --fs-table-base: clamp(14px, 1.05vw, 16px);
+      --fs-footer-base: clamp(13px, 1.0vw, 15px);
+
+      /* ===== Scaled typography ===== */
+      --fs-body: calc(var(--fs-body-base) * var(--scale));
+      --fs-small: calc(var(--fs-small-base) * var(--scale));
+      --fs-pill: calc(var(--fs-pill-base) * var(--scale));
+      --fs-note: calc(var(--fs-note-base) * var(--scale));
+      --fs-card-p: calc(var(--fs-card-p-base) * var(--scale));
+      --fs-section-p: calc(var(--fs-section-p-base) * var(--scale));
+      --fs-feature-h: calc(var(--fs-feature-h-base) * var(--scale));
+      --fs-feature-p: calc(var(--fs-feature-p-base) * var(--scale));
+      --fs-btn: calc(var(--fs-btn-base) * var(--scale));
+      --fs-summary: calc(var(--fs-summary-base) * var(--scale));
+      --fs-lec-title: calc(var(--fs-lec-title-base) * var(--scale));
+      --fs-lec-desc: calc(var(--fs-lec-desc-base) * var(--scale));
+      --fs-table: calc(var(--fs-table-base) * var(--scale));
+      --fs-footer: calc(var(--fs-footer-base) * var(--scale));
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Cairo",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      font-size: var(--fs-body);
+      background:
+        radial-gradient(1100px circle at 18% 10%, rgba(30,90,99,.35), transparent 45%),
+        radial-gradient(900px circle at 85% 0%, rgba(231,180,90,.20), transparent 45%),
+        linear-gradient(180deg, var(--midnight) 0%, #081A1E 100%);
+    }
+    a{color:inherit}
+
+    .container{width:min(1320px, 94vw); margin-inline:auto;}
+    @media (min-width:1400px){ .container{width:min(1400px, 92vw);} }
+
+    .top{
+      position:sticky; top:0; z-index:60;
+      backdrop-filter: blur(10px);
+      background: rgba(8,26,30,.60);
+      border-bottom:1px solid rgba(231,180,90,.14);
+    }
+    .top .row{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0; gap:14px; flex-wrap:wrap;
+    }
+
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:900; text-decoration:none;
+      letter-spacing:.2px;
+      font-size: calc(clamp(16px, 1.35vw, 20px) * var(--scale));
+    }
+    .logo{
+      width:40px;height:40px;border-radius:14px;
+      border:1px solid rgba(255,210,122,.30);
+      background: rgba(231,180,90,.10);
+      box-shadow: 0 12px 35px rgba(231,180,90,.08);
+    }
+
+    .pills{display:flex; gap:10px; flex-wrap:wrap}
+
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:9px 13px; border-radius:999px;
+      border:1px solid rgba(231,180,90,.25);
+      background: rgba(15,46,53,.35);
+      color: rgba(245,230,196,.95);
+      font-size: var(--fs-pill);
+      text-decoration:none;
+      transition: transform .2s ease, background .2s ease;
+      white-space:nowrap;
+      line-height: 1.6;
+    }
+    .pill:hover{transform: translateY(-1px); background: rgba(15,46,53,.45)}
+
+    .wa{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 14px; border-radius:16px;
+      border:1px solid rgba(255,210,122,.25);
+      background: rgba(15,46,53,.35);
+      text-decoration:none;
+      font-weight:800;
+      white-space:nowrap;
+      font-size: var(--fs-pill);
+      line-height: 1.6;
+    }
+    .wa b{color:var(--warm)}
+
+    /* ===== Font size control ===== */
+    .font-controls{
+      display:flex;
+      gap:8px;
+      align-items:center;
+      flex-wrap:nowrap;
+    }
+    .font-btn{
+      cursor:pointer;
+      border:1px solid rgba(255,210,122,.25);
+      background: rgba(15,46,53,.35);
+      color: rgba(255,255,255,.92);
+      border-radius: 14px;
+      padding: 9px 12px;
+      font-weight: 900;
+      font-size: var(--fs-pill);
+      line-height: 1.6;
+      transition: transform .15s ease, background .15s ease;
+      user-select:none;
+      -webkit-tap-highlight-color: transparent;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width: 44px;
+    }
+    .font-btn:hover{transform: translateY(-2px); background: rgba(15,46,53,.45)}
+    .font-ind{
+      padding: 9px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(231,180,90,.18);
+      background: rgba(8,26,30,.35);
+      color: rgba(245,230,196,.92);
+      font-weight: 900;
+      font-size: var(--fs-pill);
+      line-height: 1.6;
+      white-space:nowrap;
+    }
+
+    header{padding:34px 0 18px; position:relative; overflow:hidden}
+    .glow{
+      position:absolute; inset:-120px -120px auto -120px;
+      height:420px;
+      background:
+        radial-gradient(220px circle at 20% 40%, rgba(231,180,90,.25), transparent 60%),
+        radial-gradient(260px circle at 60% 25%, rgba(255,210,122,.18), transparent 60%),
+        radial-gradient(240px circle at 85% 55%, rgba(30,90,99,.20), transparent 60%);
+      filter: blur(22px);
+      opacity: .95;
+      pointer-events:none;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: 1.10fr .90fr;
+      gap:18px;
+      align-items:start;
+    }
+    @media (max-width: 980px){ .grid{grid-template-columns:1fr} }
+
+    h1{
+      margin:0;
+      font-size: calc(clamp(30px, 4.2vw, 54px) * var(--scale));
+      line-height:1.15;
+      color: var(--warm);
+      text-shadow: 0 0 22px rgba(255,210,122,.14);
+    }
+    .lead{
+      margin:12px 0 0;
+      color:var(--muted);
+      line-height:2.0;
+      max-width:72ch;
+      font-size: calc(clamp(16px, 1.25vw, 19px) * var(--scale));
+    }
+    .meta{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+
+    .card{
+      border-radius: 28px;
+      border:1px solid rgba(255,210,122,.20);
+      background: linear-gradient(180deg, rgba(15,46,53,.55) 0%, rgba(8,26,30,.55) 100%);
+      box-shadow: var(--shadow);
+      padding:18px;
+      backdrop-filter: blur(12px);
+      position:relative;
+      overflow:hidden;
+    }
+    .card h3{margin:0; color:var(--warm); font-size: calc(clamp(18px, 1.5vw, 22px) * var(--scale))}
+    .card p{
+      margin:8px 0 0;
+      color:rgba(255,255,255,.74);
+      line-height:2.0;
+      font-size: var(--fs-card-p);
+    }
+
+    .cover{display:grid; gap:12px}
+    .cover img{
+      width:100%;
+      border-radius: 22px;
+      border:1px solid rgba(231,180,90,.20);
+      box-shadow: 0 20px 70px rgba(0,0,0,.35);
+      background: rgba(0,0,0,.2);
+      object-fit: cover;
+    }
+
+    .note{
+      border-radius: 18px;
+      border:1px solid rgba(231,180,90,.18);
+      background: rgba(15,46,53,.35);
+      padding:12px 14px;
+      color: rgba(255,255,255,.80);
+      font-size: var(--fs-note);
+      line-height:2.0;
+    }
+    .note b{color:var(--glow)}
+
+    /* special header note centered */
+    .note.centered{
+      text-align:center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height: 92px;
+    }
+    .note.centered .center-lines{
+      width:100%;
+      font-weight: 900;
+      color: rgba(245,230,196,.95);
+      letter-spacing: .2px;
+      font-size: calc(clamp(16px, 1.25vw, 20px) * var(--scale));
+      line-height: 2.1;
+    }
+
+    section{padding: 18px 0 46px}
+    .section-head{margin: 16px 0 12px}
+    .section-head h2{
+      margin:0;
+      color:var(--warm);
+      font-size: calc(clamp(22px, 2.6vw, 32px) * var(--scale));
+      line-height: 1.25;
+    }
+    .section-head p{
+      margin:8px 0 0;
+      color:rgba(255,255,255,.72);
+      line-height:2.0;
+      font-size: var(--fs-section-p);
+      max-width:85ch;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3,1fr);
+      gap:14px;
+    }
+    @media (max-width: 980px){ .cards{grid-template-columns:1fr} }
+
+    .feature{
+      border-radius: var(--r);
+      border:1px solid rgba(231,180,90,.20);
+      background: linear-gradient(180deg, rgba(15,46,53,.65) 0%, rgba(8,26,30,.60) 100%);
+      padding:18px;
+      box-shadow: 0 10px 40px rgba(0,0,0,.25);
+      transition: transform .2s ease;
+      position: relative;
+      overflow:hidden;
+      backdrop-filter: blur(10px);
+    }
+    .feature:hover{transform: translateY(-4px)}
+    .feature .icon{
+      width:46px;height:46px;border-radius:14px;
+      border:1px solid rgba(255,210,122,.35);
+      background: rgba(231,180,90,.10);
+      display:grid;place-items:center;
+      font-size: calc(22px * var(--scale));
+      color:var(--warm);
+    }
+    .feature h4{
+      margin:12px 0 0;
+      font-size: var(--fs-feature-h);
+      color:var(--warm);
+      line-height: 1.6;
+    }
+    .feature p{
+      margin:6px 0 0;
+      color:rgba(255,255,255,.80);
+      line-height:2.05;
+      font-size: var(--fs-feature-p);
+    }
+
+    .timeline{display:grid; gap:12px;}
+    .step{
+      border-radius: 20px;
+      border: 1px solid rgba(231,180,90,.20);
+      background: rgba(8,26,30,.45);
+      padding: 16px;
+      backdrop-filter: blur(10px);
+    }
+    .step b{ color: var(--warm); font-size: calc(clamp(16px, 1.2vw, 18px) * var(--scale)); }
+    .step p{
+      margin: 6px 0 0;
+      color: rgba(255,255,255,.72);
+      line-height: 2.0;
+      font-size: var(--fs-section-p);
+    }
+
+    .cta{
+      border-radius: 28px;
+      border: 1px solid rgba(255,210,122,.22);
+      background:
+        radial-gradient(900px circle at 20% 10%, rgba(231,180,90,.20), transparent 55%),
+        linear-gradient(180deg, rgba(15,46,53,.75) 0%, rgba(8,26,30,.80) 100%);
+      padding: 26px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .cta h3{ margin:0; color: var(--warm); font-size: calc(clamp(22px, 2.2vw, 28px) * var(--scale)); }
+    .cta p{ margin: 10px 0 0; color: rgba(255,255,255,.78); line-height: 2.0; font-size: var(--fs-section-p); }
+
+    .btns{display:flex; gap:10px; flex-wrap:wrap}
+    .btn{
+      cursor:pointer;
+      border:0;
+      border-radius: 14px;
+      padding: 11px 15px;
+      font-weight: 900;
+      font-size: var(--fs-btn);
+      transition: transform .18s ease, filter .18s ease;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      user-select:none;
+      line-height: 1.6;
+      white-space:nowrap;
+    }
+    .btn-primary{
+      background: linear-gradient(180deg, var(--gold) 0%, var(--warm) 100%);
+      color: var(--midnight);
+      box-shadow: 0 18px 45px rgba(231,180,90,.16);
+    }
+    .btn-primary:hover{transform: translateY(-2px); filter: brightness(1.02)}
+    .btn-ghost{
+      border: 1px solid rgba(255,210,122,.25);
+      background: rgba(15,46,53,.30);
+      color: rgba(255,255,255,.9);
+    }
+    .btn-ghost:hover{transform: translateY(-2px)}
+
+    .lectures{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    @media (min-width: 1100px){
+      .lectures{ grid-template-columns: 1fr 1fr; }
+    }
+
+    .lecture{
+      border-radius: var(--r);
+      border:1px solid rgba(231,180,90,.20);
+      background: rgba(8,26,30,.45);
+      padding: 14px;
+      backdrop-filter: blur(10px);
+    }
+    .lec-top{
+      display:flex;
+      gap:12px;
+      justify-content:space-between;
+      align-items:flex-start;
+      flex-wrap:wrap;
+    }
+    .lec-title{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      flex-wrap:wrap;
+    }
+    .idx{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:36px; height:36px;
+      border-radius: 999px;
+      border:1px solid rgba(255,210,122,.30);
+      background: rgba(231,180,90,.10);
+      color: var(--warm);
+      font-weight:900;
+      flex:0 0 auto;
+      margin-top:2px;
+      font-size: calc(clamp(14px, 1.05vw, 16px) * var(--scale));
+    }
+    .lec-title h3{
+      margin:0;
+      color: var(--warm);
+      font-size: var(--fs-lec-title);
+      line-height:1.75;
+    }
+    .lec-title small{color: rgba(245,230,196,.85); font-weight:700; font-size: var(--fs-small);}
+
+    .lec-desc{
+      margin:8px 0 0;
+      color: rgba(255,255,255,.72);
+      font-size: var(--fs-lec-desc);
+      line-height:2.0;
+    }
+
+    /* Unified tags for status + results (Fixed width to keep ALL consistent) */
+    .lec-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:flex-start;
+    }
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,210,122,.22);
+      background: rgba(231,180,90,.10);
+      color: var(--warm);
+      font-weight:900;
+      font-size: calc(clamp(13px, 1.0vw, 15px) * var(--scale));
+      white-space:nowrap;
+      line-height: 1.6;
+      text-decoration:none;
+      min-height: 40px;
+      min-width: 132px;   /* <-- مهم: نفس المقاس لكل الأزرار */
+      text-align:center;  /* <-- توحيد النص */
+    }
+    .tag-muted{
+      background: rgba(15,46,53,.28);
+      color: rgba(245,230,196,.92);
+      border-color: rgba(231,180,90,.20);
+    }
+    .tag-link:hover{transform: translateY(-2px); transition: transform .15s ease}
+
+    details{margin-top:10px}
+    summary{
+      cursor:pointer;
+      color: rgba(255,255,255,.88);
+      font-weight:800;
+      font-size: var(--fs-summary);
+      line-height: 1.8;
+    }
+
+    .quiz{
+      margin-top:10px;
+      border-top:1px solid rgba(231,180,90,.12);
+      padding-top:10px;
+      display:grid;
+      gap: 10px;
+      font-size: var(--fs-small);
+      line-height: 2.0;
+    }
+    .q{
+      border-radius: 16px;
+      border:1px solid rgba(231,180,90,.16);
+      background: rgba(15,46,53,.30);
+      padding: 12px 12px;
+      font-size: var(--fs-small);
+      line-height: 2.0;
+    }
+    .q b{color:var(--glow)}
+    .opts{margin-top:8px; display:grid; gap:8px}
+    .opt{
+      display:flex; gap:10px; align-items:flex-start;
+      padding: 10px 10px;
+      border-radius: 14px;
+      border:1px solid rgba(231,180,90,.12);
+      background: rgba(8,26,30,.25);
+      font-size: var(--fs-small);
+      line-height: 2.0;
+    }
+    input[type="radio"]{margin-top:6px}
+    .name-row{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+      margin-top: 10px;
+    }
+    .name-row input{
+      flex: 1 1 240px;
+      padding: 11px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(231,180,90,.22);
+      background: rgba(8,26,30,.35);
+      color: var(--text);
+      outline:none;
+      font-size: var(--fs-small);
+      line-height: 1.8;
+    }
+
+    .results{
+      border-radius: 28px;
+      border:1px solid rgba(231,180,90,.20);
+      background: rgba(8,26,30,.45);
+      padding: 16px;
+      backdrop-filter: blur(10px);
+      overflow:auto;
+    }
+    table{width:100%; border-collapse: collapse; min-width: 860px}
+    th,td{
+      padding: 12px 10px;
+      border-bottom: 1px solid rgba(231,180,90,.12);
+      text-align:right;
+      font-size: var(--fs-table);
+      vertical-align: top;
+      color: rgba(255,255,255,.82);
+      line-height: 1.9;
+    }
+    th{color: var(--glow); font-weight:900}
+
+    .locked{opacity:.75; border:1px dashed rgba(231,180,90,.35);}
+    .rating{display:flex; gap: 8px; flex-wrap:wrap; align-items:center; margin-top: 10px;}
+    .star{
+      cursor:pointer;
+      width: calc(46px * var(--scale));
+      height: calc(46px * var(--scale));
+      border-radius: 14px;
+      border:1px solid rgba(255,210,122,.25);
+      background: rgba(15,46,53,.30);
+      display:grid; place-items:center;
+      font-size: calc(22px * var(--scale));
+      transition: transform .15s ease;
+      user-select:none;
+    }
+    .star:hover{transform: translateY(-2px)}
+    .star.active{
+      background: rgba(231,180,90,.18);
+      border-color: rgba(255,210,122,.38);
+      color: var(--warm);
+    }
+    textarea{
+      width:100%;
+      min-height: 100px;
+      padding: 11px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(231,180,90,.22);
+      background: rgba(8,26,30,.35);
+      color: var(--text);
+      outline:none;
+      line-height:2.0;
+      margin-top: 10px;
+      resize: vertical;
+      font-size: var(--fs-small);
+    }
+
+    footer{
+      padding: 22px 0;
+      background:#071518;
+      border-top:1px solid rgba(231,180,90,.12);
+      color:rgba(255,255,255,.64);
+      font-size: var(--fs-footer);
+      line-height: 1.9;
+    }
+    .foot-row{display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap}
+
+    .small{font-size: var(--fs-small); color: rgba(255,255,255,.62); line-height: 1.9}
+
+    .reveal{opacity:0; transform: translateY(16px); transition: opacity .7s ease, transform .7s ease;}
+    .reveal.show{opacity:1; transform: translateY(0);}
+
+    /* ===== CTA Button: Hover + Shine + Pulse + Ripple ===== */
+    .cta-btn{
+      display:inline-block;
+      padding: calc(18px * var(--scale)) calc(42px * var(--scale));
+      font-size: calc(clamp(16px, 1.25vw, 19px) * var(--scale));
+      font-weight:900;
+      border-radius:22px;
+      text-decoration:none;
+      background:linear-gradient(135deg,#E7B45A,#FFD27A);
+      color:#0F2E35;
+      box-shadow:0 15px 40px rgba(231,180,90,.25);
+      transition:transform .35s ease, box-shadow .35s ease, filter .35s ease;
+      position:relative;
+      overflow:hidden;
+      user-select:none;
+      -webkit-tap-highlight-color: transparent;
+      animation: ctaPulse 4s ease-in-out infinite;
+      line-height: 1.6;
+    }
+    .cta-btn:hover{
+      transform:translateY(-6px) scale(1.03);
+      box-shadow:0 25px 60px rgba(231,180,90,.45);
+      filter: brightness(1.02);
+    }
+    .cta-btn::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:-75%;
+      width:50%;
+      height:100%;
+      background:linear-gradient(
+        120deg,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,.55) 50%,
+        rgba(255,255,255,0) 100%
+      );
+      transform:skewX(-25deg);
+      opacity:.9;
+    }
+    .cta-btn:hover::before{ animation: shine 1s forwards; }
+    @keyframes shine{ 100%{ left:130%; } }
+
+    @keyframes ctaPulse{
+      0%, 88%, 100%{
+        transform: translateY(0) scale(1);
+        box-shadow:0 15px 40px rgba(231,180,90,.25);
+      }
+      92%{
+        transform: translateY(-2px) scale(1.01);
+        box-shadow:0 22px 55px rgba(231,180,90,.35);
+      }
+      96%{
+        transform: translateY(0) scale(1);
+        box-shadow:0 15px 40px rgba(231,180,90,.25);
+      }
+    }
+
+    .cta-btn .ripple{
+      position:absolute;
+      border-radius:999px;
+      transform:scale(0);
+      animation:ripple .6s ease-out;
+      background:rgba(255,255,255,.55);
+      pointer-events:none;
+      mix-blend-mode: overlay;
+    }
+    @keyframes ripple{
+      to{ transform:scale(3.2); opacity:0; }
+    }
+
+    /* Card Motion */
+    .motion-card{
+      transition: transform .35s ease, box-shadow .35s ease;
+      will-change: transform;
+    }
+    .motion-card:hover{
+      transform: translateY(-6px);
+      box-shadow: 0 30px 90px rgba(0,0,0,.45);
+    }
+    .motion-card.auto-float{
+      animation: floatCard 4s ease-in-out infinite;
+    }
+    @keyframes floatCard{
+      0%, 88%, 100%{ transform: translateY(0); }
+      92%{ transform: translateY(-4px); }
+      96%{ transform: translateY(0); }
+    }
+
+    /* سكربت المحاضرة الأولى */
+    .script-cards{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:14px;
+      margin-top:14px;
+    }
+    @media (min-width: 1050px){
+      .script-cards{ grid-template-columns: 1fr 1fr; }
+    }
+
+    /* نفس المقاس بين كل عناصر السكربت */
+    .script-cards .feature{
+      min-height: 190px;
+    }
+
+    @media (max-width: 520px){
+      .btn{ width:100%; justify-content:center; }
+      .wa{ width:100%; justify-content:center; }
+      .brand{ width:100%; justify-content:center; }
+      .pills{ justify-content:center; }
+      .font-controls{ width:100%; justify-content:center; }
+      .lec-actions{ width:100%; justify-content:flex-start; }
+      .tag{ min-width: 46%; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top">
+    <div class="container row">
+      <a class="brand" href="#top">
+        <span class="logo" aria-hidden="true"></span>
+        كورس الفوتوشوب
+      </a>
+
+      <div class="pills">
+        <a class="pill" href="#why">ليه تتعلم؟</a>
+        <a class="pill" href="#plan">الخطة</a>
+        <a class="pill" href="#lecture1">المحاضرة التعريفية</a>
+        <a class="pill" href="#lectures">المحاضرات</a>
+        <a class="pill" href="#results">النتائج</a>
+        <a class="pill" href="#rating">التقييم</a>
+        <a class="pill" href="#join">احجز</a>
+      </div>
+
+      <div class="font-controls" aria-label="التحكم في حجم الخط">
+        <button class="font-btn" id="fontDec" title="تصغير الخط">A−</button>
+        <span class="font-ind" id="fontInd">100%</span>
+        <button class="font-btn" id="fontInc" title="تكبير الخط">A+</button>
+        <button class="font-btn" id="fontReset" title="إعادة الضبط">↺</button>
+      </div>
+
+      <a class="wa" href="https://wa.me/201153895089" target="_blank" rel="noreferrer">
+        واتساب: <b>01153895089</b>
+      </a>
+    </div>
+  </div>
+
+  <header id="top">
+    <div class="glow"></div>
+    <div class="container grid">
+      <div class="card reveal">
+        <h1>كورس Photoshop — من الصفر للاحتراف</h1>
+        <p class="lead">
+          مع <b style="color:var(--glow)">Mohamed Eid AbdEl-Aziz</b> — كورس عملي بمشاريع وأسئلة تثبيت بعد كل محاضرة.
+        </p>
+
+        <div class="meta">
+          <span class="pill">تأسيس + تطبيق</span>
+          <span class="pill">3 أسئلة لكل محاضرة</span>
+          <span class="pill">نتيجة % من 100</span>
+        </div>
+
+        <div class="btns" style="margin-top:14px">
+          <a class="btn btn-primary" href="#lectures">ابدأ المحاضرات</a>
+          <a class="btn btn-ghost" href="#lecture1">المحتوي التعريفي →</a>
+        </div>
+
+        <!-- مرة واحدة فقط -->
+        <div class="note centered" style="margin-top:14px">
+          <div class="center-lines">
+            إنا فتحنا لك فتحا مبينا
+          </div>
+        </div>
+      </div>
+
+      <div class="cover reveal">
+        <img src="course-cover.png" alt="صورة الكورس الرسمية" />
+        <div class="note">
+          <b>مجانًا بالكامل:</b> هناخدك خطوة بخطوة لقيادة مهاراتك وتطويرها لحد مستوى احترافي يفتح لك أبواب الشغل بثقة.
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="why">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>ليه تتعلم Photoshop؟</h2>
+        <p>
+          لأنك مش بتتعلم برنامج… أنت بتتعلم مهارة مطلوبة تقدر تشتغل بيها وتعمل دخل.
+          الفوتوشوب أساس الجرافيك والسوشيال والإعلانات وتعديل الصور والهوية البصرية.
+        </p>
+      </div>
+
+      <div class="cards">
+        <div class="feature reveal">
+          <div class="icon">💼</div>
+          <h4>مطلوب في سوق العمل</h4>
+          <p>من أكثر المهارات المطلوبة في التصميم والإعلانات وتعديل الصور.</p>
+        </div>
+        <div class="feature reveal">
+          <div class="icon">🌍</div>
+          <h4>دخل أونلاين</h4>
+          <p>تقدر تشتغل Freelance من البيت وتبني Portfolio محترم.</p>
+        </div>
+        <div class="feature reveal">
+          <div class="icon">⚡</div>
+          <h4>نتائج واضحة</h4>
+          <p>كل محاضرة فيها تطبيق واختبار يثبت إنك فاهم.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="plan" style="background: rgba(8,26,30,.35);">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>خطة الكورس</h2>
+        <p>هنمشي خطوة بخطوة من فهم الأساسيات لحد مشاريع حقيقية وتصدير جاهز للسوق.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="step reveal"><b>1) Setup + Mindset</b><p>تجهيز البرنامج + طريقة تفكير المصمم.</p></div>
+        <div class="step reveal"><b>2) الأدوات الأساسية</b><p>التحديد، القص، الطبقات، الماسك… أساس أي شغل.</p></div>
+        <div class="step reveal"><b>3) دمج احترافي</b><p>Compositing واقعي + ظلال وإضاءة وتناسق ألوان.</p></div>
+        <div class="step reveal"><b>4) مشاريع تطبيقية</b><p>بوستات سوشيال + بانرات + تصميمات شغل السوق.</p></div>
+        <div class="step reveal"><b>5) أول عميل</b><p>مبادئ Portfolio + بداية العمل الحر.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="lecture1">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>سكربت المحاضرة التعريفية</h2>
+      </div>
+
+      <div class="card reveal">
+        <div class="script-cards">
+          <div class="feature reveal">
+            <div class="icon">🕌</div>
+            <h4>الافتتاح</h4>
+            <p>
+              بسم الله الرحمن الرحيم<br>
+              قبل ما نبدأ نتعلم فوتوشوب… عايز أسألكم سؤال مهم جدًا…
+            </p>
+          </div>
+
+          <div class="feature reveal">
+            <div class="icon">❓</div>
+            <h4>سؤال تحفيزي</h4>
+            <p>
+              كم مرة شفت تصميم على السوشيال وقلت: نفسي أعمل حاجة زي دي؟<br>
+              وكم مرة شفت إعلان أو صورة متعدلة باحتراف وقلت: الناس دي بتتعلم ده إزاي؟
+            </p>
+          </div>
+
+          <div class="feature reveal">
+            <div class="icon">✨</div>
+            <h4>الحقيقة</h4>
+            <p>
+              الموضوع مش سحر… ومش محتاج تكون رسّام… ولا فنان بالفطرة.<br>
+              الموضوع محتاج مهارة… والمهارة دي اسمها Photoshop.
+            </p>
+          </div>
+
+          <div class="feature reveal">
+            <div class="icon">🧠</div>
+            <h4>عقلية المصمم</h4>
+            <p>
+              المصمم مش بيضغط أزرار… المصمم بيحل مشاكل ويحوّل هدف لتصميم يشد العين.
+            </p>
+          </div>
+
+          <div class="feature reveal">
+            <div class="icon">🛠️</div>
+            <h4>الخطوة العملية</h4>
+            <p>
+              هنشتغل بإيدينا من أول يوم: تطبيق بسيط + اختبار صغير بعد كل محاضرة… عشان تثبت لنفسك إنك بتتقدم.
+            </p>
+          </div>
+
+          <!-- تم حذف كلمة القفلة وتظبيط المسافات بين السطرين -->
+          <div class="feature reveal">
+            <div class="icon">🔥</div>
+            <h4>رسالة أخيرة</h4>
+            <p>
+              مش بوعدك إنك تبقى محترف في يومين…<br>
+              لكن بوعدك إنك لو التزمت وطبقت — مستواك هيتغير تمامًا.<br>
+              <b style="color:var(--warm)">هل أنت مستعد تبدأ؟</b>
+            </p>
+          </div>
+        </div>
+
+        <div style="margin-top:22px; display:flex; justify-content:center;">
+          <div class="feature reveal motion-card auto-float"
+               style="
+                 max-width:650px;
+                 width:100%;
+                 text-align:center;
+                 padding:50px 40px;
+                 border-radius:35px;
+                 position:relative;
+                 overflow:hidden;
+                 background:linear-gradient(145deg, rgba(18,63,69,.9), rgba(8,26,30,.95));
+                 border:1px solid rgba(231,180,90,.25);
+                 box-shadow:0 25px 80px rgba(0,0,0,.4);
+               ">
+            <div style="
+              position:absolute;
+              width:300px;
+              height:300px;
+              background:radial-gradient(circle, rgba(231,180,90,.25) 0%, transparent 70%);
+              top:-110px;
+              right:-110px;
+              filter:blur(40px);
+              pointer-events:none;"></div>
+
+            <div class="icon"
+                 style="
+                   margin:0 auto 20px auto;
+                   width:75px;
+                   height:75px;
+                   font-size: calc(30px * var(--scale));
+                   background:rgba(231,180,90,.15);
+                   border:1px solid rgba(255,210,122,.4);
+                   box-shadow:0 10px 30px rgba(231,180,90,.25);
+                 ">🚀</div>
+
+            <h4 style="font-size:calc(clamp(20px, 2vw, 26px) * var(--scale)); margin-bottom:15px; color:#FFD27A;">ابدأ فورًا</h4>
+
+            <p style="font-size:calc(clamp(16px, 1.2vw, 18px) * var(--scale)); line-height:2; color:rgba(255,255,255,.85); max-width:520px; margin:auto;">
+              ادخل على المحاضرات، وحل الاختبار بعد كل محاضرة
+              علشان تتابع تقدمك وتبني أساس قوي خطوة بخطوة.
+            </p>
+
+            <div style="margin-top:30px;">
+              <a class="cta-btn" href="#lectures">اذهب للمحاضرات</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="lectures">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>المحاضرات</h2>
+        <p>لكل محاضرة اختبار (3 أسئلة). بعد التسجيل يظهر اسمك ودرجتك ونسبتك في جدول النتائج.</p>
+      </div>
+
+      <div id="lecturesList" class="lectures"></div>
+    </div>
+  </section>
+
+  <section id="results">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>سجل النتائج</h2>
+      </div>
+
+      <div class="btns" style="margin-bottom:10px">
+        <button class="btn btn-primary" id="exportCsv">تصدير CSV</button>
+        <button class="btn btn-ghost" id="clearAll">مسح كل النتائج</button>
+      </div>
+
+      <div class="results reveal">
+        <table>
+          <thead>
+            <tr>
+              <th>الاسم</th>
+              <th>المحاضرة</th>
+              <th>الدرجة</th>
+              <th>النسبة</th>
+              <th>التاريخ</th>
+            </tr>
+          </thead>
+          <tbody id="resultsBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="rating">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>تقييم الكورس</h2>
+        <p>لا يمكن التقييم إلا بعد إنهاء كل المحاضرات + اجتياز سؤال الاحتراف.</p>
+      </div>
+
+      <div id="ratingCard" class="card locked reveal">
+        <h3>🔒 التقييم مقفول حاليًا</h3>
+        <p id="ratingHint" class="small" style="margin-top:8px"></p>
+
+        <div id="secretBox" style="display:none; margin-top:12px">
+          <div class="note">
+            <b>سؤال الاحتراف:</b> ما الفرق بين <b>Opacity</b> و <b>Fill</b> في طبقة عليها Layer Styles؟
+            <div class="small">اكتب إجابة مختصرة بكلماتك.</div>
+          </div>
+
+          <div class="name-row">
+            <input id="secretAnswer" placeholder="اكتب الإجابة هنا..." />
+            <button class="btn btn-primary" id="unlockRating">فتح التقييم</button>
+          </div>
+
+          <p class="small" id="secretMsg"></p>
+        </div>
+
+        <div id="ratingBox" style="display:none; margin-top:14px">
+          <h3 style="margin-bottom:8px">✅ تم فتح التقييم</h3>
+          <div class="rating" id="stars"></div>
+          <textarea id="reviewText" placeholder="اكتب رأيك في الكورس..."></textarea>
+
+          <div class="btns" style="margin-top:10px">
+            <button class="btn btn-primary" id="submitReview">إرسال التقييم</button>
+            <button class="btn btn-ghost" id="resetReview">إعادة تعيين</button>
+          </div>
+
+          <p class="small" id="reviewMsg"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="join">
+    <div class="container">
+      <div class="cta reveal">
+        <h3>هل أنت مستعد تبدأ؟</h3>
+        <p>
+          أنا مش بوعدك إنك تبقى محترف في يومين… لكن بوعدك إن لو التزمت وطبقت — مستواك هيتغير تمامًا.
+        </p>
+
+        <div class="btns" style="margin-top:14px;">
+          <a class="btn btn-primary" href="https://wa.me/201153895089" target="_blank" rel="noreferrer">احجز على واتساب</a>
+          <a class="btn btn-ghost" href="#top">ارجع لفوق ↑</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container foot-row">
+      <div>© <span id="year"></span> — Mohamed Eid AbdEl-Aziz</div>
+      <div>WhatsApp: 01153895089</div>
+    </div>
+  </footer>
+
+  <script>
+    // ====== ثابتات ======
+    const ADMIN_PIN = "152535";
+
+    // Google Sheet WebApp
+    const GOOGLE_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbxaipZbJlv1ux8WxTixv0tByg_LD8RPHr0eJAbkN2AmNH_jHGzXGIUJtRqdNMBk9lHX/exec";
+
+    const STORE_KEY = "ps_course_results_final_v4";
+    const DONE_KEY  = "ps_course_done_final_v4";
+    const REVIEW_KEY = "ps_course_review_final_v4";
+
+    // ====== Font scale controls ======
+    const SCALE_KEY = "ps_course_font_scale_v1";
+    const root = document.documentElement;
+
+    function clamp(n, a, b){ return Math.max(a, Math.min(b, n)); }
+
+    function setScale(v){
+      const val = clamp(Number(v) || 1, 0.85, 1.35);
+      root.style.setProperty("--scale", val);
+      localStorage.setItem(SCALE_KEY, String(val));
+      const pct = Math.round(val * 100);
+      document.getElementById("fontInd").textContent = pct + "%";
+    }
+
+    function initScale(){
+      const saved = localStorage.getItem(SCALE_KEY);
+      setScale(saved ? Number(saved) : 1);
+    }
+
+    document.getElementById("fontInc").addEventListener("click", () => {
+      const cur = Number(getComputedStyle(root).getPropertyValue("--scale")) || 1;
+      setScale((cur + 0.05).toFixed(2));
+    });
+    document.getElementById("fontDec").addEventListener("click", () => {
+      const cur = Number(getComputedStyle(root).getPropertyValue("--scale")) || 1;
+      setScale((cur - 0.05).toFixed(2));
+    });
+    document.getElementById("fontReset").addEventListener("click", () => setScale(1));
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function loadResults(){ try{return JSON.parse(localStorage.getItem(STORE_KEY)||"[]")}catch(e){return []} }
+    function saveResults(a){ localStorage.setItem(STORE_KEY, JSON.stringify(a)); }
+    function loadDone(){ try{return JSON.parse(localStorage.getItem(DONE_KEY)||"[]")}catch(e){return []} }
+    function saveDone(a){ localStorage.setItem(DONE_KEY, JSON.stringify(a)); }
+
+    async function postToSheet(payload){
+      try{
+        await fetch(GOOGLE_WEBAPP_URL, {
+          method:"POST",
+          mode:"no-cors",
+          headers:{ "Content-Type":"application/json" },
+          body: JSON.stringify(payload)
+        });
+      }catch(e){}
+    }
+
+    // ====== المحاضرات (16) + 3 أسئلة ======
+    const lectures = [
+      { title:"بداية قوية: إعداد البرنامج وبيئة الشغل الصح", desc:"تثبيت، إعدادات أساسية، تنظيم الملفات، وفرق RGB/CMYK بشكل مبسط.",
+        questions:[
+          { q:"أفضل نظام ألوان لتصميمات السوشيال غالبًا هو:", a:0, options:["RGB","CMYK","Grayscale"] },
+          { q:"الميزة الأساسية من تنظيم Layers من البداية:", a:1, options:["يزود حجم الملف","يسهل التعديل لاحقًا","يمنع الحفظ"] },
+          { q:"أداة التحريك الأساسية للطبقات اسمها:", a:2, options:["Brush","Crop","Move Tool"] },
+        ]},
+      { title:"قراءة الواجهة: لوحات، مساحات عمل، واختصارات مهمة", desc:"فهم Panels، أدوات الشغل اليومية، وحيل تختصر وقتك.",
+        questions:[
+          { q:"لوحة Layers تستخدم لـ:", a:0, options:["إدارة الطبقات","تغيير الخطوط فقط","تصدير الفيديو"] },
+          { q:"اختصار Undo المتكرر في فوتوشوب هو:", a:1, options:["Ctrl+U","Ctrl+Alt+Z","Ctrl+P"] },
+          { q:"Workspace فائدتها الأساسية:", a:2, options:["تلوين الصور","ضغط الصورة","ترتيب الأدوات حسب شغلك"] },
+        ]},
+      { title:"التحديد باحتراف: أسرار Selection اللي بتفرق", desc:"طرق تحديد ذكية + تحسين الحواف + التعامل مع التفاصيل المعقدة.",
+        questions:[
+          { q:"أداة Quick Selection تعمل بـ:", a:0, options:["سحب وتحديد تلقائي","قص يدوي بحت","كتابة نص"] },
+          { q:"Select and Mask يفيد في:", a:1, options:["تغيير الدقة","تحسين الحواف","حفظ PDF"] },
+          { q:"إضافة للتحديد عادةً مع:", a:2, options:["Alt","Shift","Ctrl"] },
+        ]},
+      { title:"Masking: قص بدون تكسير وعودة آمنة للتعديل", desc:"Layer Mask وClipping Mask وازاي تخلي شغلك Editable.",
+        questions:[
+          { q:"Layer Mask معناه:", a:1, options:["حذف نهائي","إخفاء/إظهار بدون حذف","تغيير لون فقط"] },
+          { q:"اللون الأسود على الماسك يعمل:", a:0, options:["إخفاء","إظهار","تلوين"] },
+          { q:"Clipping Mask يفيد في:", a:2, options:["تصغير الصورة","تكبير الخط","حصر تأثير داخل طبقة"] },
+        ]},
+      { title:"مفهوم الطبقات بذكاء: ترتيب، Groups، وSmart Objects", desc:"ليه Smart Object مهم؟ وإزاي ترتب مشروع كبير.",
+        questions:[
+          { q:"Smart Object أهم ميزة له:", a:2, options:["يمسح الطبقة","يقفل البرنامج","تحويلات بدون فقد جودة"] },
+          { q:"Grouping الهدف منه:", a:1, options:["يزود Noise","تنظيم المشروع","يمنع التصدير"] },
+          { q:"Duplicate Layer اختصاره:", a:0, options:["Ctrl+J","Ctrl+E","Ctrl+R"] },
+        ]},
+      { title:"قص ودمج الصور: 3 طرق عملية لشغل السوق", desc:"دمج واقعي + تناسق منظور + خامات بسيطة لكن شكل قوي.",
+        questions:[
+          { q:"الأداة الأشهر لضبط المنظور:", a:2, options:["Blur","Transform","Perspective/Distort"] },
+          { q:"أفضل طريقة لدمج ناعم بين عنصرين:", a:2, options:["Delete","Eraser دائمًا","Mask + Soft Brush"] },
+          { q:"لو الإضاءة مش متناسقة، الحل الأقرب:", a:0, options:["Color/Light Adjustment","زيادة Saturation فقط","حذف الطبقة"] },
+        ]},
+      { title:"Pen Tool: طريقك لقص نظيف واحترافي", desc:"رسم مسارات دقيقة + تحويلها لتحديد + استخدامات عملية.",
+        questions:[
+          { q:"Pen Tool ينتج:", a:1, options:["Noise","Paths","Frames"] },
+          { q:"تحويل Path لتحديد يتم من:", a:1, options:["History Panel","Paths Panel","Filter Gallery"] },
+          { q:"النقطة المنحنية تتحكم فيها بـ:", a:0, options:["Handles","Sharpen","Crop"] },
+        ]},
+      { title:"Blending Modes: دمج وإضاءة وتأثيرات بدون تعقيد", desc:"فهم Multiply/Screen/Overlay واستخدامات سريعة.",
+        questions:[
+          { q:"Multiply غالبًا يستخدم لـ:", a:0, options:["تغميق","تفتيح","تدوير"] },
+          { q:"Screen غالبًا يستخدم لـ:", a:1, options:["قص","تفتيح","تحديد"] },
+          { q:"Overlay يدي إحساس:", a:2, options:["قص+حذف","RGB+CMYK","Contrast ذكي"] },
+        ]},
+      { title:"Clone Stamp & Healing: تنظيف احترافي للصورة", desc:"إزالة شوائب + ترميم + فرق الأدوات.",
+        questions:[
+          { q:"Clone Stamp يعتمد على:", a:2, options:["تدوير","قص","Sample Source"] },
+          { q:"Healing Brush يختلف لأنه:", a:0, options:["يمزج نسيج + لون","يحذف الطبقة","يقلل الدقة"] },
+          { q:"أخذ عينة Source يتم بـ:", a:1, options:["Ctrl","Alt","Shift"] },
+        ]},
+      { title:"Dodge & Burn: إبراز عمق وملامح بطريقة برو", desc:"تفتيح/تغميق ذكي + طريقة آمنة بالشغل على طبقات.",
+        questions:[
+          { q:"Dodge وظيفته:", a:1, options:["تغميق","تفتيح","تحديد"] },
+          { q:"Burn وظيفته:", a:0, options:["تغميق","تفتيح","قص"] },
+          { q:"طريقة آمنة للعمل:", a:2, options:["على الصورة مباشرة","Delete ثم رجوع","طبقة رمادي 50% + Overlay"] },
+        ]},
+      { title:"Adjustment Layers: تحكم في اللون والإضاءة بدون تدمير", desc:"Levels/Curves/Hue-Saturation واستخدامات واقعية.",
+        questions:[
+          { q:"ميزة Adjustment Layer:", a:0, options:["غير تدميري","يحذف الأصل","يزود حجم الملف دائمًا"] },
+          { q:"Curves مفيد لـ:", a:2, options:["كتابة نص","قص","تحكم دقيق في الإضاءة/الكونتراست"] },
+          { q:"Hue/Saturation يستخدم لـ:", a:1, options:["تغيير الدقة","تغيير اللون والتشبع","تصدير فيديو"] },
+        ]},
+      { title:"Layer Styles: ظل، جلو، ستروك… بشكل احترافي", desc:"Drop Shadow/Stroke/Inner Glow + قواعد شكل نظيف.",
+        questions:[
+          { q:"Stroke يعني:", a:2, options:["قص","محو","حد/إطار حول العنصر"] },
+          { q:"Drop Shadow يفيد في:", a:1, options:["رفع الدقة","إحساس عمق","تصغير حجم"] },
+          { q:"أفضل ممارسة للشغل النضيف:", a:0, options:["قيم بسيطة","تزوّد كل التأثيرات","ألوان عشوائية"] },
+        ]},
+      { title:"Filters بذكاء: مؤثرات مفيدة مش “وخلاص”", desc:"Gaussian Blur/Sharpen/Camera Raw Filter واستخدامها صح.",
+        questions:[
+          { q:"Gaussian Blur غالبًا يستخدم لـ:", a:0, options:["تمويه","كتابة","تحديد"] },
+          { q:"Sharpen هدفه:", a:1, options:["تمويه","إظهار التفاصيل","قص"] },
+          { q:"أفضل طريقة لتطبيق فلتر بدون تكسير:", a:2, options:["على الأصل","Delete بعدين Undo","Smart Object + Smart Filter"] },
+        ]},
+      { title:"Color Correction & Grading: ستايل لوني يرفع الشغل مستوى", desc:"تصحيح ألوان + Mood لوني + قواعد بسيطة.",
+        questions:[
+          { q:"Color Correction يعني:", a:1, options:["فلتر جاهز","تصحيح طبيعي للألوان","تكبير حجم"] },
+          { q:"Color Grading يعني:", a:2, options:["قص","ترميم","ستايل/مزاج لوني"] },
+          { q:"أداة شائعة للـ Grading:", a:0, options:["Color Lookup/Gradient Map","Eraser","Ruler"] },
+        ]},
+      { title:"مشروع سوشيال: تصميم بوست احترافي بخطة واضحة", desc:"تقسيم عناصر + هيراركي + كتابة + إخراج نهائي.",
+        questions:[
+          { q:"Hierarchy المقصود به:", a:0, options:["ترتيب العين بين العناصر","قص الصور","ضغط الملف"] },
+          { q:"مقاس شائع لبوست إنستجرام:", a:1, options:["800x200","1080x1080","1920x1080 دائمًا"] },
+          { q:"أفضل طريقة لتثبيت الخطوط:", a:2, options:["لون عشوائي","تكبير كل شيء","تنويع وزن الخط + مسافات"] },
+        ]},
+      { title:"التجهيز للتسليم: تصدير صح + جودة عالية + حجم مناسب", desc:"PNG/JPG وإعدادات التصدير حسب المنصة.",
+        questions:[
+          { q:"PNG مناسب لـ:", a:2, options:["صور خامة فقط","فيديو","شفافية وجودة عناصر"] },
+          { q:"JPG مناسب لـ:", a:0, options:["صور فوتوغرافية بحجم أقل","شفافية","ملفات مشروع"] },
+          { q:"أفضل عادة قبل التسليم:", a:1, options:["دمج الطبقات بدون نسخة","تصدير نسخة + حفظ PSD","حذف الملفات"] },
+        ]},
+    ];
+
+    // ====== Render Lectures ======
+    const lecturesList = document.getElementById("lecturesList");
+
+    function renderLectures(){
+      const done = new Set(loadDone());
+      lecturesList.innerHTML = "";
+
+      lectures.forEach((lec, i) => {
+        const idx = i + 1;
+
+        const statusTag = done.has(idx)
+          ? `<span class="tag">✅ تم الحل</span>`
+          : `<span class="tag tag-muted">⏳ لم يُحل بعد</span>`;
+
+        const resultsTag = `<a class="tag tag-muted tag-link" href="#results">سجل النتائج</a>`;
+
+        const qHtml = lec.questions.map((qq, qi) => {
+          const name = `lec_${idx}_q_${qi}`;
+          const opts = qq.options.map((op, oi) => `
+            <label class="opt">
+              <input type="radio" name="${name}" value="${oi}">
+              <span>${op}</span>
+            </label>
+          `).join("");
+
+          return `
+            <div class="q">
+              <div><b>س${qi+1}:</b> ${qq.q}</div>
+              <div class="opts">${opts}</div>
+            </div>
+          `;
+        }).join("");
+
+        const el = document.createElement("div");
+        el.className = "lecture reveal";
+        el.innerHTML = `
+          <div class="lec-top">
+            <div class="lec-title">
+              <span class="idx">${idx}</span>
+              <div>
+                <h3>${lec.title} <small>— (3 أسئلة)</small></h3>
+                <div class="lec-desc">${lec.desc}</div>
+              </div>
+            </div>
+
+            <div class="lec-actions">
+              ${statusTag}
+              ${resultsTag}
+            </div>
+          </div>
+
+          <details>
+            <summary>افتح أسئلة المحاضرة</summary>
+            <div class="quiz">
+              <div class="name-row">
+                <input id="name_${idx}" placeholder="اكتب اسم الطالب هنا..." />
+                <button class="btn btn-primary" id="submit_${idx}">تسجيل الإجابات</button>
+              </div>
+              ${qHtml}
+              <p class="small" id="msg_${idx}"></p>
+            </div>
+          </details>
+        `;
+        lecturesList.appendChild(el);
+
+        el.querySelector(`#submit_${idx}`).addEventListener("click", () => submitLecture(idx));
+      });
+
+      refreshRatingLock();
+      revealAll();
+    }
+
+    // ====== Submit Lecture ======
+    function submitLecture(lectureIndex){
+      const lec = lectures[lectureIndex - 1];
+      const nameInput = document.getElementById(`name_${lectureIndex}`);
+      const msg = document.getElementById(`msg_${lectureIndex}`);
+
+      const studentName = (nameInput.value || "").trim();
+      if(!studentName){
+        msg.textContent = "من فضلك اكتب اسم الطالب قبل التسجيل.";
+        msg.style.color = "rgba(255,210,122,.95)";
+        return;
+      }
+
+      let score = 0;
+      const total = lec.questions.length;
+
+      for(let qi=0; qi<total; qi++){
+        const groupName = `lec_${lectureIndex}_q_${qi}`;
+        const chosen = document.querySelector(`input[name="${groupName}"]:checked`);
+        if(!chosen){
+          msg.textContent = "لازم تجاوب على كل الأسئلة الثلاثة قبل التسجيل.";
+          msg.style.color = "rgba(255,210,122,.95)";
+          return;
+        }
+        const val = Number(chosen.value);
+        if(val === lec.questions[qi].a) score++;
+      }
+
+      const percentNum = Math.round((score / total) * 100);
+      const percentStr = `${percentNum}%`;
+      const dateStr = new Date().toLocaleString("ar-EG");
+
+      const results = loadResults();
+      results.unshift({
+        name: studentName,
+        lecture: `${lectureIndex}. ${lec.title}`,
+        score: `${score}/${total}`,
+        percent: percentStr,
+        date: dateStr
+      });
+      saveResults(results);
+
+      const done = new Set(loadDone());
+      done.add(lectureIndex);
+      saveDone(Array.from(done).sort((a,b)=>a-b));
+
+      postToSheet({
+        type: "result",
+        name: studentName,
+        lectureIndex,
+        lectureTitle: lec.title,
+        score: `${score}/${total}`,
+        percent: percentStr,
+        date: dateStr
+      });
+
+      msg.textContent = `تم التسجيل ✅ — الدرجة: ${score}/${total} — النسبة: ${percentStr}`;
+      msg.style.color = "rgba(245,230,196,.95)";
+
+      renderResults();
+      renderLectures();
+    }
+
+    // ====== Results ======
+    const resultsBody = document.getElementById("resultsBody");
+    function escapeHtml(s){
+      return String(s)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;");
+    }
+    function renderResults(){
+      const results = loadResults();
+      resultsBody.innerHTML = results.map(r => `
+        <tr>
+          <td>${escapeHtml(r.name)}</td>
+          <td>${escapeHtml(r.lecture)}</td>
+          <td><span class="tag">${escapeHtml(r.score)}</span></td>
+          <td><span class="tag">${escapeHtml(r.percent)}</span></td>
+          <td>${escapeHtml(r.date)}</td>
+        </tr>
+      `).join("") || `<tr><td colspan="5" class="small">لا توجد نتائج بعد.</td></tr>`;
+    }
+
+    // ====== PIN lock ======
+    function requirePin(actionName){
+      const pin = prompt(`أدخل الرقم السري لتنفيذ: ${actionName}`);
+      if(pin === null) return false;
+      if(String(pin).trim() === ADMIN_PIN) return true;
+      alert("رقم سري غير صحيح.");
+      return false;
+    }
+
+    document.getElementById("exportCsv").addEventListener("click", () => {
+      if(!requirePin("تصدير النتائج")) return;
+
+      const rows = loadResults();
+      const header = ["Name","Lecture","Score","Percent","Date"];
+      const csv = [header.join(",")].concat(
+        rows.map(r => [
+          `"${String(r.name).replaceAll('"','""')}"`,
+          `"${String(r.lecture).replaceAll('"','""')}"`,
+          `"${String(r.score).replaceAll('"','""')}"`,
+          `"${String(r.percent).replaceAll('"','""')}"`,
+          `"${String(r.date).replaceAll('"','""')}"`
+        ].join(","))
+      ).join("\n");
+
+      const blob = new Blob([csv], {type:"text/csv;charset=utf-8"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "course_results.csv";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    });
+
+    document.getElementById("clearAll").addEventListener("click", () => {
+      if(!requirePin("مسح النتائج")) return;
+      if(!confirm("متأكد؟ سيتم مسح كل النتائج وحالة الإنهاء والتقييم.")) return;
+
+      localStorage.removeItem(STORE_KEY);
+      localStorage.removeItem(DONE_KEY);
+      localStorage.removeItem(REVIEW_KEY);
+
+      renderResults();
+      renderLectures();
+      resetRatingUI(true);
+      refreshRatingLock();
+      alert("تم المسح ✅");
+    });
+
+    // ====== Rating lock ======
+    const ratingCard = document.getElementById("ratingCard");
+    const ratingHint = document.getElementById("ratingHint");
+    const secretBox = document.getElementById("secretBox");
+    const ratingBox = document.getElementById("ratingBox");
+    const secretAnswer = document.getElementById("secretAnswer");
+    const secretMsg = document.getElementById("secretMsg");
+
+    function isSecretCorrect(text){
+      const t = (text || "").toLowerCase();
+      const hasOpacity = t.includes("opacity") || t.includes("أوباسيتي") || t.includes("شفافية");
+      const hasFill = t.includes("fill") || t.includes("فيل") || t.includes("ملء");
+      const mentionsStyles = t.includes("layer styles") || t.includes("styles") || t.includes("ستايل") || t.includes("تأثيرات");
+      const mentionsContent = t.includes("content") || t.includes("المحتوى") || t.includes("داخل") || t.includes("الطبقة نفسها") || t.includes("بيكسلات");
+      return (hasOpacity && hasFill && mentionsStyles && mentionsContent);
+    }
+
+    function refreshRatingLock(){
+      const done = new Set(loadDone());
+      const allDone = done.size === lectures.length;
+
+      const savedReview = localStorage.getItem(REVIEW_KEY);
+      if(savedReview){
+        ratingCard.classList.remove("locked");
+        secretBox.style.display = "none";
+        ratingBox.style.display = "block";
+        ratingHint.textContent = "✅ التقييم متاح (تم حفظ تقييم سابق على هذا الجهاز).";
+        loadReviewUI();
+        return;
+      }
+
+      if(allDone){
+        ratingCard.classList.remove("locked");
+        ratingHint.textContent = "✅ تم إنهاء كل المحاضرات. أجب سؤال الاحتراف لفتح التقييم.";
+        secretBox.style.display = "block";
+        ratingBox.style.display = "none";
+      }else{
+        ratingCard.classList.add("locked");
+        ratingHint.textContent = `أكمل المحاضرات أولاً. تم حل: ${done.size} من ${lectures.length}.`;
+        secretBox.style.display = "none";
+        ratingBox.style.display = "none";
+      }
+    }
+
+    document.getElementById("unlockRating").addEventListener("click", () => {
+      const ans = secretAnswer.value || "";
+      if(isSecretCorrect(ans)){
+        secretMsg.textContent = "✅ إجابة صحيحة — تم فتح التقييم.";
+        secretMsg.style.color = "rgba(245,230,196,.95)";
+        secretBox.style.display = "none";
+        ratingBox.style.display = "block";
+        initStars();
+      }else{
+        secretMsg.textContent = "❌ الإجابة غير دقيقة. ركّز: Opacity تؤثر على الطبقة وتأثيراتها، بينما Fill على محتوى الطبقة دون Layer Styles.";
+        secretMsg.style.color = "rgba(255,210,122,.95)";
+      }
+    });
+
+    const starsWrap = document.getElementById("stars");
+    const reviewText = document.getElementById("reviewText");
+    const reviewMsg = document.getElementById("reviewMsg");
+    let currentStars = 0;
+
+    function initStars(){
+      starsWrap.innerHTML = "";
+      for(let i=1;i<=5;i++){
+        const s = document.createElement("div");
+        s.className = "star";
+        s.textContent = "★";
+        s.title = `${i} / 5`;
+        s.addEventListener("click", () => { currentStars = i; updateStars(); });
+        starsWrap.appendChild(s);
+      }
+      updateStars();
+    }
+    function updateStars(){
+      [...starsWrap.children].forEach((el, idx) => el.classList.toggle("active", idx < currentStars));
+    }
+
+    document.getElementById("submitReview").addEventListener("click", () => {
+      if(currentStars < 1){
+        reviewMsg.textContent = "اختار تقييم نجوم (من 1 إلى 5).";
+        reviewMsg.style.color = "rgba(255,210,122,.95)";
+        return;
+      }
+      const txt = (reviewText.value || "").trim();
+      if(txt.length < 10){
+        reviewMsg.textContent = "اكتب تعليق بسيط (10 حروف على الأقل).";
+        reviewMsg.style.color = "rgba(255,210,122,.95)";
+        return;
+      }
+
+      const payload = { stars: currentStars, text: txt, at: new Date().toLocaleString("ar-EG") };
+      localStorage.setItem(REVIEW_KEY, JSON.stringify(payload));
+      postToSheet({ type:"review", stars: currentStars, text: txt, at: payload.at });
+
+      reviewMsg.textContent = "✅ تم إرسال التقييم.";
+      reviewMsg.style.color = "rgba(245,230,196,.95)";
+      refreshRatingLock();
+    });
+
+    document.getElementById("resetReview").addEventListener("click", () => {
+      if(!confirm("متأكد؟ سيتم مسح التقييم المحفوظ.")) return;
+      localStorage.removeItem(REVIEW_KEY);
+      resetRatingUI(false);
+      refreshRatingLock();
+    });
+
+    function resetRatingUI(full){
+      currentStars = 0;
+      if(full){
+        secretAnswer.value = "";
+        secretMsg.textContent = "";
+      }
+      reviewText.value = "";
+      reviewMsg.textContent = "";
+      starsWrap.innerHTML = "";
+      ratingBox.style.display = "none";
+    }
+
+    function loadReviewUI(){
+      try{
+        const saved = JSON.parse(localStorage.getItem(REVIEW_KEY) || "null");
+        if(!saved) return;
+        currentStars = saved.stars || 0;
+        initStars();
+        reviewText.value = saved.text || "";
+        reviewMsg.textContent = `تم حفظ التقييم بتاريخ: ${saved.at || ""}`;
+        reviewMsg.style.color = "rgba(245,230,196,.85)";
+      }catch(e){}
+    }
+
+    // Reveal
+    const io = new IntersectionObserver((entries)=> {
+      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add("show"); });
+    }, { threshold: 0.12 });
+    function revealAll(){ document.querySelectorAll(".reveal").forEach(el => io.observe(el)); }
+
+    // Ripple Effect للزرار
+    document.addEventListener("click", function(e){
+      const btn = e.target.closest(".cta-btn");
+      if(!btn) return;
+
+      const rect = btn.getBoundingClientRect();
+      const ripple = document.createElement("span");
+      ripple.className = "ripple";
+
+      const size = Math.max(rect.width, rect.height);
+      ripple.style.width = ripple.style.height = size + "px";
+
+      const x = e.clientX - rect.left - size/2;
+      const y = e.clientY - rect.top - size/2;
+
+      ripple.style.left = x + "px";
+      ripple.style.top = y + "px";
+
+      btn.appendChild(ripple);
+      ripple.addEventListener("animationend", () => ripple.remove());
+    });
+
+    // Init
+    initScale();
+    renderLectures();
+    renderResults();
+    refreshRatingLock();
+    revealAll();
+  </script>
+</body>
+</html>
